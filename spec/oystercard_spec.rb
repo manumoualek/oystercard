@@ -23,6 +23,23 @@ describe Oystercard do
     it 'deducts value spent from the balance' do 
       expect { subject.deduct 10 }.to change {subject.balance}.by -10
     end
-
   end
+
+  describe "#touch_in" do 
+    it 'states whether the user has "touched in" or not.' do 
+      expect(subject.touch_in).to eql true
+    end  
+  end
+
+  describe "#touch_out" do 
+    it 'states whether the user has "touched out" or not.' do 
+      expect(subject.touch_out).to eql false
+    end 
+  end 
+
+  it 'states if the user is "in journey" or not. ' do  
+    expect([true, false]).to include subject.in_journey
+  end
+ 
+
 end
