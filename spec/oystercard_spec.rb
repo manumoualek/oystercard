@@ -19,6 +19,9 @@ describe Oystercard do
     end  
   end
 
+ 
+
+
   describe "#deduct" do 
     it 'deducts value spent from the balance' do 
       expect { subject.deduct 10 }.to change {subject.balance}.by -10
@@ -27,8 +30,14 @@ describe Oystercard do
 
   describe "#touch_in" do 
     it 'states whether the user has "touched in" or not.' do 
+      subject.top_up(1)
       expect(subject.touch_in).to eql true
     end  
+
+    it 'allows the user to "touch_in" if there is at least £1 balance' do
+      subject.top_up(0.5)
+      expect{subject.touch_in}.to raise_error("Can't touch in, balance under £1")
+    end 
   end
 
   describe "#touch_out" do 
@@ -41,5 +50,7 @@ describe Oystercard do
     expect([true, false]).to include subject.in_journey
   end
  
+
+  
 
 end
