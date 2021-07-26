@@ -11,4 +11,8 @@ class Oystercard
     fail "Can't top up balance over 90" unless @balance + amount <= MAX_BALANCE
       @balance += amount
   end  
+
+  def deduct(cost)
+    @balance -= cost
+  end  
 end  

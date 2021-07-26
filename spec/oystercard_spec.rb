@@ -1,4 +1,4 @@
-require "/Users/manu/Projects/oystercard/lib/oystercard.rb"
+require "/Users/Student/Projects/oystercard/lib/oystercard.rb"
 
 describe Oystercard do
   
@@ -19,5 +19,10 @@ describe Oystercard do
     end  
   end
 
+  describe "#deduct" do 
+    it 'deducts value spent from the balance' do 
+      expect { subject.deduct 10 }.to change {subject.balance}.by -10
+    end
 
+  end
 end
